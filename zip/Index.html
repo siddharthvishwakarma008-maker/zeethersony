@@ -1,0 +1,895 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ZEETHER SONY</title>
+<meta name="description" content="An AI-sony sup story and zn studio creating original entertainment for a global audience.">
+<style>
+:root{
+ --bg:#090a0b;--panel:#121314;--gold:#c9a66b;
+ --cream:#eee9df;--muted:#aaa49a;--line:#ffffff24;
+ --serif:Georgia,'Times New Roman',serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--cream);font-family:Arial,sans-serif;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+button{font:inherit;cursor:pointer}
+img{max-width:100%;display:block}
+.container{width:min(1240px,92%);margin:auto}
+section{padding:115px 0}
+.eyebrow{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--gold)}
+h2{font:normal clamp(43px,6.4vw,82px)/.98 var(--serif);letter-spacing:-2px;margin:20px 0 28px}
+p{color:var(--muted);font-size:14px;line-height:1.9}
+.btn{
+ display:inline-flex;align-items:center;justify-content:center;gap:12px;
+ padding:15px 22px;border:1px solid #c9a66b88;
+ color:var(--cream);background:transparent;
+ font-size:10px;letter-spacing:2px;text-transform:uppercase;
+ transition:.3s
+}
+.btn:hover{background:var(--gold);color:#111;transform:translateY(-3px)}
+.btn.primary{background:var(--gold);color:#111}
+.btn.primary:hover{background:#e5c58f}
+.btn.small{padding:11px 15px}
+
+/* HEADER */
+header{
+ position:fixed;top:0;left:0;width:100%;z-index:100;
+ padding:22px 0;border-bottom:1px solid transparent;
+ transition:.3s;background:linear-gradient(#08090bea,transparent)
+}
+header.scrolled{background:#090a0bf2;border-color:var(--line);backdrop-filter:blur(15px)}
+.nav{display:flex;align-items:center;justify-content:space-between}
+.logo{font:25px var(--serif);letter-spacing:5px}
+.logo small{display:block;font:9px Arial;letter-spacing:3px;color:var(--gold);margin-top:5px}
+.navlinks{display:flex;align-items:center;gap:27px}
+.navlinks a{font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:#d4d0c8}
+.navlinks a:hover{color:var(--gold)}
+.menu-btn{display:none;background:none;border:0;color:white;font-size:26px}
+.mobile-menu{display:none}
+
+/* HERO */
+.hero{height:100vh;min-height:690px;position:relative;display:flex;align-items:end;overflow:hidden}
+.hero-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.hero:after{
+ content:"";position:absolute;inset:0;
+ background:linear-gradient(90deg,#060708df 0%,#06070870 60%,transparent),
+ linear-gradient(0deg,#090a0b 0%,transparent 48%)
+}
+.hero-content{position:relative;z-index:2;padding-bottom:105px;max-width:850px}
+.hero h1{font:normal clamp(58px,9vw,116px)/.88 var(--serif);letter-spacing:-5px;margin:24px 0}
+.hero h1 span{color:var(--gold);font-style:italic}
+.hero-content p{max-width:550px;color:#dedbd3}
+.hero-buttons{display:flex;gap:12px;flex-wrap:wrap;margin-top:30px}
+.scroll-label{position:absolute;right:4%;bottom:45px;z-index:3;writing-mode:vertical-rl;color:var(--gold);font-size:9px;letter-spacing:3px}
+
+/* NUMBERS */
+.stats{display:grid;grid-template-columns:repeat(5,1fr);padding:34px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.stat{padding:12px 20px;border-right:1px solid var(--line)}
+.stat:first-child{padding-left:0}
+.stat:last-child{border:0}
+.stat strong{font:39px var(--serif);color:var(--gold);display:block}
+.stat span{font-size:9px;color:#aaa;letter-spacing:1.5px;text-transform:uppercase}
+.stat button{margin-top:9px;background:none;border:0;color:var(--gold);font-size:10px;text-decoration:underline}
+
+/* WORLD 001 */
+.split{display:grid;grid-template-columns:1fr 1fr;gap:8%;align-items:center}
+.photo{position:relative;overflow:hidden;min-height:540px;background:#151515}
+.photo img{width:100%;height:100%;min-height:540px;object-fit:cover;transition:1s}
+.photo:hover img{transform:scale(1.045)}
+.photo-label{position:absolute;bottom:25px;left:25px;font-size:10px;letter-spacing:2px}
+.world-title{font:italic 31px var(--serif);color:var(--gold);margin:25px 0}
+
+/* CREATOR CREDIT */
+.creator{border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:24px 0;margin-top:55px;display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+.creator span{font-size:10px;letter-spacing:2px;color:var(--muted)}
+.creator strong{font:18px var(--serif);color:var(--cream)}
+
+/* METHOD */
+.method-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line);margin-top:50px}
+.method-card{background:var(--bg);padding:30px;min-height:205px;transition:.3s}
+.method-card:hover{background:#191919}
+.method-card b{font:34px var(--serif);color:var(--gold)}
+.method-card h3{font:23px var(--serif);margin:25px 0 12px}
+
+/* STUDIO */
+.studio{background:#111315}
+.studio-tags{display:flex;gap:9px;flex-wrap:wrap;margin:25px 0}
+.studio-tags span{border:1px solid var(--line);padding:12px 15px;font-size:9px;letter-spacing:1.5px;text-transform:uppercase}
+.rights{border-left:1px solid var(--gold);padding-left:18px;margin:25px 0}
+
+/* PARTNERS */
+.partners-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line);margin-top:50px}
+.partner-card{background:var(--bg);padding:30px;min-height:190px;transition:.3s}
+.partner-card:hover{background:#191919}
+.partner-card b{font:30px var(--serif);color:var(--gold)}
+.partner-card h3{font:22px var(--serif);margin:22px 0 12px}
+.partner-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:30px}
+
+/* FINAL CTA */
+.final-cta{
+ text-align:center;
+ background:linear-gradient(#090a0bd9,#090a0bf0),url('assets/final-background.jpg') center/cover
+}
+.final-cta h2{font-size:clamp(43px,7vw,85px)}
+
+/* FOOTER */
+footer{border-top:1px solid var(--line);padding:45px 0 25px}
+.footer-top{display:flex;justify-content:space-between;gap:30px;flex-wrap:wrap}
+.footer-links{display:flex;gap:20px;flex-wrap:wrap}
+.footer-links a{font-size:10px;color:var(--muted)}
+.footer-bottom{display:flex;justify-content:space-between;gap:15px;flex-wrap:wrap;margin-top:45px;color:#777;font-size:10px}
+
+/* DRAGON EXPERIENCE */
+.dragon-page{
+ background:radial-gradient(ellipse at 50% 27%,#382322 0%,#171316 38%,#090a0b 78%);
+ padding-top:135px;text-align:center;overflow:hidden
+}
+.dragon-heading{max-width:760px;margin:auto}
+.dragon-heading h1{font:normal clamp(50px,8vw,95px)/.95 var(--serif);margin:22px 0}
+.dragon-heading h1 span{color:var(--gold);font-style:italic}
+.egg-stage{height:490px;display:grid;place-items:center;position:relative}
+.egg-light{position:absolute;width:340px;height:340px;border-radius:50%;background:#ffb66b22;filter:blur(65px);animation:glow 3s infinite alternate}
+.egg-button{position:relative;z-index:3;width:min(310px,68vw);border:0;background:none;filter:drop-shadow(0 35px 35px #000);transition:.3s}
+.egg-button:hover{transform:translateY(-7px) scale(1.02)}
+.egg-button img{width:100%;transition:opacity .6s}
+.egg-button.cracking{animation:shake .14s infinite}
+.egg-button.hatched img{opacity:0}
+.dragon-character{
+ position:absolute;z-index:2;width:min(410px,88vw);
+ opacity:0;transform:translateY(100px) scale(.45);
+ transition:1.2s cubic-bezier(.16,1,.3,1);pointer-events:none
+}
+.dragon-character.show{opacity:1;transform:translateY(0) scale(1)}
+.egg-instruction{font-size:10px;color:var(--gold);letter-spacing:4px;margin-top:0}
+.egg-note{font:italic 24px var(--serif);color:#e5cba4;min-height:35px;margin:20px}
+.egg-actions{display:flex;justify-content:center;gap:12px;flex-wrap:wrap}
+@keyframes shake{0%{transform:rotate(-3deg)}50%{transform:rotate(3deg)}100%{transform:rotate(-3deg)}}
+@keyframes glow{to{transform:scale(1.25);opacity:.55}}
+.spark{position:absolute;width:7px;height:7px;background:#ffd58d;border-radius:50%;box-shadow:0 0 20px #ffc16b;animation:fly 1.3s forwards;pointer-events:none;z-index:5}
+@keyframes fly{to{transform:translate(var(--x),var(--y)) scale(0);opacity:0}}
+
+/* CO-FOUNDER CARD */
+.card-panel{max-width:680px;margin:45px auto 0;text-align:left;padding:30px;border:1px solid var(--line);background:#111315}
+.card-panel h3{font:30px var(--serif);margin:10px 0 20px}
+.field{display:block;font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin:14px 0}
+.field input,.field select{width:100%;margin-top:9px;background:#090a0b;border:1px solid var(--line);padding:14px;color:white}
+.founder-card{
+ min-height:230px;margin-top:20px;padding:25px;
+ display:flex;flex-direction:column;justify-content:space-between;
+ background:linear-gradient(135deg,#36291e,#121314 65%);
+ border:1px solid #c9a66b77
+}
+.founder-card .big{font:32px var(--serif);color:var(--gold)}
+.founder-card .dragon-name{font:40px var(--serif)}
+.share-row{display:flex;gap:8px;flex-wrap:wrap;margin-top:20px}
+
+/* CAMPAIGN */
+.campaign-intro{text-align:center;max-width:800px;margin:auto}
+.campaign-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);margin:45px 0}
+.campaign-stat{background:#111315;padding:25px}
+.campaign-stat strong{font:34px var(--serif);color:var(--gold);display:block}
+.campaign-stat span{font-size:10px;color:var(--muted)}
+.feature-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:15px;margin-top:40px}
+.feature{padding:25px;border:1px solid var(--line);background:#101214}
+.feature h3{font:22px var(--serif);color:var(--gold);margin-bottom:12px}
+.stage-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin-top:40px}
+.stage{border-top:1px solid var(--gold);padding:18px 12px}
+.stage strong{font:29px var(--serif);color:var(--gold)}
+.stage h3{font:19px var(--serif);margin:12px 0}
+.reward-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:15px;margin-top:40px}
+.reward{border:1px solid var(--line);padding:27px;background:#111315}
+.reward h3{font:26px var(--serif);color:var(--gold)}
+.reward .price{font:36px var(--serif);margin:16px 0}
+.reward ul{padding-left:18px;color:var(--muted);font-size:12px;line-height:2.1;margin:20px 0}
+.timeline{max-width:780px;margin:40px auto;border-left:1px solid var(--gold);padding-left:28px}
+.timeline-item{padding:0 0 28px;position:relative}
+.timeline-item:before{content:"";position:absolute;left:-33px;top:5px;width:9px;height:9px;border-radius:50%;background:var(--gold)}
+.timeline-item strong{color:var(--gold);font:19px var(--serif)}
+.faq{max-width:800px;margin:35px auto}
+.faq details{border-bottom:1px solid var(--line);padding:20px 0}
+.faq summary{font:21px var(--serif);cursor:pointer}
+.faq details p{padding-top:14px}
+
+/* FORMS AND MODALS */
+.form-box{max-width:760px;margin:35px auto;padding:30px;border:1px solid var(--line);background:#111315;text-align:left}
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.form-grid .full{grid-column:1/-1}
+.form-box label{display:block;font-size:10px;color:var(--muted);letter-spacing:1px;text-transform:uppercase}
+.form-box input,.form-box select{width:100%;margin-top:8px;padding:14px;background:#090a0b;color:white;border:1px solid var(--line)}
+.form-box button{margin-top:20px}
+.modal{position:fixed;inset:0;background:#000e;z-index:200;display:none;place-items:center;padding:20px}
+.modal.open{display:grid}
+.modal-box{background:#141618;border:1px solid var(--line);padding:35px;max-width:550px;width:100%;position:relative;max-height:90vh;overflow:auto}
+.modal-close{position:absolute;right:15px;top:10px;background:none;color:white;border:0;font-size:28px}
+.modal-box h2{font-size:38px}
+.reveal{opacity:0;transform:translateY(30px);transition:.8s}
+.reveal.visible{opacity:1;transform:none}
+@media(max-width:850px){
+ .navlinks{display:none}.menu-btn{display:block}
+ .mobile-menu.open{display:flex;position:absolute;top:75px;left:0;right:0;background:#090a0b;padding:25px;flex-direction:column;gap:22px;border-bottom:1px solid var(--line)}
+ .mobile-menu a{font-size:11px;letter-spacing:2px}
+ .split{grid-template-columns:1fr;gap:35px}
+ .method-grid{grid-template-columns:1fr 1fr}
+ .partners-grid{grid-template-columns:1fr 1fr}
+ .stats{grid-template-columns:repeat(3,1fr)}
+ .stage-grid{grid-template-columns:repeat(3,1fr)}
+}
+@media(max-width:540px){
+ section{padding:80px 0}
+ .hero{min-height:680px}
+ .hero h1{font-size:58px;letter-spacing:-2px}
+ .stats{grid-template-columns:1fr 1fr}
+ .stat{padding:15px 8px}
+ .stat strong{font-size:30px}
+ .method-grid,.partners-grid,.feature-grid,.reward-grid{grid-template-columns:1fr}
+ .photo,.photo img{min-height:360px}
+ .stage-grid{grid-template-columns:1fr 1fr}
+ .form-grid{grid-template-columns:1fr}
+ .form-grid .full{grid-column:auto}
+ .card-panel,.form-box{padding:20px}
+ .egg-stage{height:390px}
+ .campaign-stats{grid-template-columns:1fr}
+}
+</style>
+</head>
+
+<body>
+
+<!-- HEADER -->
+<header id="header">
+ <div class="container nav">
+  <a href="#home" class="logo">ZEETHER<small>STORIES BECOME WORLDS</small></a>
+  <nav class="navlinks">
+   <a href="#world">World 00$</a>
+   <a href="#method">The made of ZEETHER</a>
+   <a href="#studio">The studio</a>
+   <a href="#partners">Partnerships</a>
+   <a href="#dragon">Enter Zeether</a>
+   <a href="#contact" class="btn small">Let's talk</a>
+  </nav>
+  <button class="menu-btn" id="menuBtn">☰</button>
+ </div>
+ <nav class="mobile-menu" id="mobileMenu">
+  <a href="#world">World 00$</a>
+  <a href="#method">The made of ZEETHER</a>
+  <a href="#studio">The studio</a>
+  <a href="#partners">Partnerships</a>
+  <a href="#dragon">Enter ZEETHER</a>
+  <a href="#contact">Let's talk</a>
+ </nav>
+</header>
+
+<main>
+
+<!-- HOME HERO -->
+<section class="hero" id="home">
+ <video class="hero-bg" autoplay muted loop playsinline poster="9.png">
+  <source src="ml.mp4" type="video/mp4">
+ </video>
+ <div class="container hero-content">
+  <div class="eyebrow">Independent imagination. Worldwide resonance.</div>
+  <h1>WE MAKE STORIES<br><span>TO PROVIDE</span><br>INSPIRATION.</h1>
+  <p>An AI-native story and zn studio creating original entertainment for a global audience.</p>
+  <div class="hero-buttons">
+   <a class="btn primary" href="#world">Discover ZEETHER ↗</a>
+   <a class="btn" href="https://www.youtube.com/" target="_blank" rel="noopener">Watch The Gaatha's Waarian ↗</a>
+   <button class="btn" data-modal="partnerModal">Request partner deck</button>
+  </div>
+ </div>
+ <div class="scroll-label">SCROLL TO DISCOVER ↓</div>
+</section>
+
+<!-- STATS -->
+<div class="container">
+ <div class="stats reveal">
+  <div class="stat"><strong>1B+</strong><span>Reported worldwide views</span></div>
+  <div class="stat"><strong>55M</strong><span>YouTube in just 7 days</span></div>
+  <div class="stat"><strong>300M+</strong><span>Facebook views</span></div>
+  <div class="stat"><strong>30M+</strong><span>Instagram views</span></div>
+  <div class="stat"><strong>10M+</strong><span>TikTok views</span></div>
+ </div>
+ <p style="text-align:center;font-size:10px;margin-top:18px;letter-spacing:2px">
+  ONE STORY. CARRIED ACROSS THE WORLD.
+  <button class="btn small" data-modal="numbersModal">About these numbers</button>
+ </p>
+</div>
+
+<!-- WORLD 001 -->
+<section id="world">
+ <div class="container">
+  <div class="split">
+   <div class="photo reveal">
+    <img src="9.png" alt="A Gaatha beside her Waar ">
+    <div class="photo-label">WORLD 001 · NOW SHOWING</div>
+   </div>
+   <div class="reveal">
+    <div class="eyebrow">01 — THE FIRST WORLD · ORIGINAL ZN</div>
+    <h2>THE GAATHA'S<br>WAARIAN.</h2>
+    <p>A gaatha. A creature the world Aprocse. And a bond stronger than power.</p>
+    <br>
+    <h3 class="world-title">Love was the gaatha.</h3>
+    <p>It began as an AI-native film. Then the audience took it further. Watched. Shared. Translated. Remixed. Carried across platforms, languages and communities.</p>
+    <br>
+    <h3 class="world-title">That's when a story starts becoming a world.</h3>
+    <a class="btn" href="https://www.youtube.com/" target="_blank" rel="noopener">Explore World 00$ ↗</a>
+   </div>
+  </div>
+  <div class="creator reveal">
+   <span>CREATED BY</span>
+   <strong>ABHAY VIM</strong>
+   <span>CREATOR OF WORLD 00$: THE GAATHA'S WAARIAN</span>
+  </div>
+ </div>
+</section>
+                         
+<!-- METHOD -->
+<section id="method">
+ <div class="container">
+  <div class="eyebrow reveal">02 — THE MADE OF ZEETHER</div>
+  <h2 class="reveal">I HAVE PREPARED.<br>A WORLD STORY<br>ZEETHER.</h2>
+  <p class="reveal" style="max-width:650px">
+   We create original stories and put them in front of real audiences.
+   Then we watch what travels. The moments shared. The characters remembered.
+   The worlds people return to.
+  </p>
+  <p class="reveal" style="margin-top:20px;color:var(--gold)">
+   Story first. Audience signal second. Expansion after that.
+  </p>
+  <div class="method-grid reveal">
+   <article class="method-card"><b>01</b><h3>BUILD.</h3><p>Start with a story worth telling.</p></article>
+   <article class="method-card"><b>02</b><h3>RELEASE.</h3><p>Put the world in front of an audience.</p></article>
+   <article class="method-card"><b>03</b><h3>LISTEN.</h3><p>Understand what people connect with.</p></article>
+   <article class="method-card"><b>04</b><h3>EXPAND.</h3><p>Grow the stories audiences to provide inspiration.</p></article>
+  </div>
+ </div>
+</section>                             
+
+<!-- STUDIO -->                          
+
+
+
+<section class="studio" id="studio">
+ <div class="container split">
+  <div class="reveal">
+   <div class="eyebrow">03 — THE STUDIO</div>
+   <h2>I STARTED THE STORY<br>NOW IT'S TIME.<br>TO TAKE OVER <br>THE WORLD.</h2>
+   <div class="eyebrow">SONY SUP-LED · AI-ZEETHER</div>
+   <p style="margin-top:22px">
+    Film can be where a world begins. It doesn't have to be where it ends.
+    The right ZEETHER worlds can grow through:
+   </p>
+   <div class="studio-tags">
+    <span>Distribution</span><span>Localization</span>
+    <span>New stories</span><span>Publishing</span>
+    <span>Interactive experiences</span><span>Consumer products</span>
+    <span>Licensing</span>
+   </div>
+   <div class="rights">
+    <div class="eyebrow">BUILT FOR PARTNERSHIP</div>
+    <p>Original world created by ABHAY VIM. Rights scope and production documentation are discussed for each partnership.</p>
+   </div>
+   <p>AI changes how quickly a small creative team can build, localize and release ambitious entertainment. Technology isn't the product. The story is.</p>
+  </div>
+  <div class="photo reveal">
+   <img src="9.png" alt="ZEETHER cinematic world">
+  </div>
+ </div>
+</section>
+
+<!-- PARTNERSHIPS -->
+<section id="partners">
+ <div class="container">
+  <div class="eyebrow reveal">04 — PARTNERSHIPS · THE NEXT CHAPTER IS OPEN</div>
+  <h2 class="reveal">THERE ARE MANY<br>WAYS INTO<br>A ZEETHER WORLD.</h2>
+  <p class="reveal" style="max-width:620px">
+   For the people who see what a story could become.
+   Let's find the right way to build together.
+  </p>
+  <div class="partners-grid reveal">
+   <article class="partner-card"><b>01</b><h3>Studios & producers</h3><p>ZN-production · Original ZN · Story development</p></article>
+   <article class="partner-card"><b>02</b><h3>Distributors & media networks</h3><p>Distribution · Territories · Localization · Platforms</p></article>
+   <article class="partner-card"><b>03</b><h3>Licensing & consumer products</h3><p>Explore future worlds, characters and product opportunities</p></article>
+   <article class="partner-card"><b>04</b><h3>Brands</h3><p>Original entertainment · Story integrations · Collaborations</p></article>
+   <article class="partner-card"><b>05</b><h3>Technology</h3><p>Generative video · Voice · Production infrastructure</p></article>
+   <article class="partner-card"><b>06</b><h3>Investment & strategic</h3><p>Long-term ZN · International growth · Consumer expansion</p></article>
+  </div>
+  <div class="partner-actions">
+   <a href="mailto:YOUR-EMAIL@example.com?subject=Partner%20with%20MYTHRA" class="btn primary">Partner with ZEETHER</a>
+   <button class="btn" data-modal="partnerModal">Request partner deck</button>
+  </div>
+ </div>              
+</section>
+
+<!-- FINAL -->
+<section class="final-cta">
+ <div class="container">
+  <div class="eyebrow">THIS IS ONLY THE BEGINNING</div>
+  <h2>A STORY WORLD.<br>IS CREATED ZN.<br>AND WAR,<br>BREAKS OUT ON ZN'S WORLD.</h2>
+  <p>We make stories people carry forward.</p>
+  <br>
+  <a class="btn primary" href="https://www.youtube.com/" target="_blank" rel="noopener">Watch World 00$ ↗</a>
+  <a class="btn" href="mailto:YOUR-EMAIL@example.com">Partner with ZEETHER</a>
+ </div>
+</section>
+
+<!-- ENTER MYTHRA / EGG PAGE -->
+<section class="dragon-page" id="dragon">
+ <div class="container">
+  <div class="dragon-heading">
+   <div class="eyebrow">THE GAATHA'S WAARIAN · YOUR STORY CONTINUES</div>
+   <p style="margin-top:22px">YOUR APROCSE WORLD THE FILM</p>
+   <h1>YOUR WORLD<br><span>IS WAITING.</span></h1>
+   <p>history of distroye your story.</p>
+  </div>
+
+  <div class="egg-stage" id="eggStage">
+   <div class="egg-light"></div>
+   <button class="egg-button" id="eggButton" aria-label="Touch the dragon egg">
+    <img src="5.png" alt="Dragon egg" height="300px"width="300px">
+   </button>
+   <img src="4.png" class="dragon-character" id="dragonCharacter" alt="Newborn three power" height="300px"width="300px">
+  </div>
+
+  <div class="egg-instruction" id="eggInstruction">TOUCH THE WORLD</div>
+  <div class="egg-note" id="eggNote">Begin your story.</div>
+
+  <div class="egg-actions">
+   <button class="btn primary" id="hatchBtn">Touch the world ↗</button>
+   <button class="btn" id="resetEgg">Reset world</button>
+   <button class="btn" id="showCard">Share your Zn-Founder card</button>
+  </div>
+
+  <!-- CO-FOUNDER CARD -->
+  <div class="card-panel" id="founderPanel" style="display:none">
+   <div class="eyebrow">YOUR HISTORY</div>
+   <h3>Your ZN-Founder card. Share it.</h3>
+   <label class="field">Your god's name (optional)
+    <input id="dragonName" maxlength="22" placeholder="ZEETHER">
+   </label>
+   <div class="founder-card" id="founderCard">
+    <div>
+     <div class="eyebrow">ZEETHER · THE GAATHA'S WAARIAN</div>
+     <div class="big">POWER ZN-FOUNDER</div>
+    </div>
+    <div class="dragon-name" id="cardDragonName">My god</div>
+    <div>
+     <p>Helping bring the first GAATHA from a film to life</p>
+     <small>ZEETHER.com/SONY</small>
+    </div>
+   </div>
+   <div class="share-row">
+    <button class="btn small" id="shareNative">Share</button>
+    <a class="btn small" id="shareWhatsapp" target="_blank">WhatsApp</a>
+    <a class="btn small" id="shareFacebook" target="_blank">Facebook</a>
+    <a class="btn small" id="shareX" target="_blank">X</a>
+    <a class="btn small" id="shareThreads" target="_blank">Threads</a>
+    <a class="btn small" id="shareLinkedin" target="_blank">LinkedIn</a>
+    <a class="btn small" id="shareTelegram" target="_blank">Telegram</a>
+    <button class="btn small" id="copyLink">Copy link</button>
+    <button class="btn small" id="saveCard">Save image</button>
+   </div>
+   <p style="font-size:11px;margin-top:15px">Save the image and post it to your story. Your friends get their own egg from the link.</p>
+  </div>
+ </div>
+</section>
+                                  
+<!-- HATCHLING CAMPAIGN -->
+<section id="campaign">
+ <div class="container">
+  <div class="campaign-intro">
+   <div class="eyebrow">ZEETHER FILMA'S· FOUNDING ZN</div>
+   <h2>THE THREE POWER<br>BORN FROM A FILM.</h2>
+   <p>Millions met this THREE POWER in The GAATH'S WARRIAN . Now we are building it as a real smart HUMAN that talks,YOUR SOMETHING LEARN , and NICE THING your child.</p>
+   <div class="campaign-stat">
+    <strong>$50,000</strong>
+    <span>If you want cinematic image, video, or dialogue prompts, you can buy them for a few dollars.</span>
+   </div>
+   <a href="#launch" class="btn primary">Join the cinematic prompt  list ↓</a>
+   <p style="font-size:11px;margin-top:12px">Free to join. No payment today. Hear first when the campaign opens.</p>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <div class="split" style="margin-top:70px">
+   <div class="photo">
+   <img src="9.png" alt="Dragon egg">
+   </div>
+
+
+
+
+
+
+cc
+
+
+
+
+   <div>
+    <div class="eyebrow">FRONT OF YOUR POWER THREE </div>
+    <h2>A POWER THAT <br>GROWS UP WITH<br>YOUR CHILD.</h2>
+    <p>When the three great powers are born, those children had a boon, yet they did not use their powers in childhood; they were born just like ordinary human children..</p>
+   </div>
+  </div>
+
+  <div class="feature-grid">
+   <article class="feature"><h3>Talks and listens</h3><p>A power that is not just strength, but can also bring about devastation.</p></article>
+   <article class="feature"><h3>Remembers</h3><p>Remembers meaningful moments and shared stories.</p></article>
+   <article class="feature"><h3>Grows with them</h3><p>New bodies, abilities and adventures as it grows.</p></article>
+   <article class="feature"><h3>Stories from the film</h3><p>New stories and adventures in its own world.</p></article>
+   <article class="feature"><h3>Safe by design</h3><p>Designed with safety and privacy in mind.</p></article>
+   <article class="feature"><h3>Works offline</h3><p>Designed for play even without a connection.</p></article>
+  </div>
+ </div>
+</section>
+
+<!-- FIVE STAGES -->
+<section>
+ <div class="container">
+  <div class="eyebrow">FIVE LIFE STAGES</div>
+  <h2>ONE HUMAN.<br>TEN YEARS.</h2>
+  <div class="stage-grid">
+   <div class="stage"><strong>01</strong><h3>BORN</h3><p>BORN DAY</p></div>
+   <div class="stage"><strong>02</strong><h3>Born from the divine energy of the Tridevi</h3><p>Age 4–6</p></div>
+   <div class="stage"><strong>03</strong><h3>THE POWER</h3><p>Age 7–9</p></div>
+   <div class="stage"><strong>04</strong><h3>Young Baby</h3><p>Age 10–12</p></div>
+   <div class="stage"><strong>05</strong><h3>Elder companion</h3><p>Age 13+</p></div>
+  </div>
+ </div>
+</section>
+
+<!-- REWARDS -->       
+<section>
+ <div class="container">
+  <div class="eyebrow">FOUNDING REWARDS</div>
+  <h2>CHOOSE YOUR PLACE<br>USE A BUDGET - FRIENDLY PLANE TO GRT PROMPT FOR CINEMATIC SCENS,LOGOS , IMAGE AN VIDEO .</h2>
+  <p>Sample reward tiers. Update prices and details before publishing your campaign.</p>
+  <div class="reward-grid">
+   <article class="reward">
+    <h3>IMAGE PROMPT </h3><div class="price">$5</div>
+    <p>For everyone who watched the film.</p>
+    <ul><li>Name in the zeether book</li><li>Workshop updates</li><li>Power of wallpapers</li></ul>
+    <button class="btn" data-reward="Ember">Choose FIRST DOLLOR</button>
+   </article>
+   <article class="reward">
+    <h3>VIDEO PROMPT</h3><div class="price">$25</div>
+    <p>Your ZEETHER's name, reserved.</p>
+    <ul><li>Everything in Gaatha</li><li>Reserve a GATHA FILMS</li><li>HISTORY OF DISTROYED TO MOSTER</li></ul>
+    <button class="btn" data-reward="Egg Keeper">SCOND DOLLOR </button>
+   </article>
+   <article class="reward">
+    <h3>SCENE'S OF PROMPT</h3><div class="price">$129</div>
+    <p>The founding smart dragon tier.</p>
+    <ul><li>Everything Distroye of God Power</li><li>Warian starter set</li><li>Moster to Target</li></ul>
+    <button class="btn primary" data-reward="First Clutch">Choose THIRD DOLLOR</button>
+   </article>
+  </div>
+  <p style="font-size:11px;margin-top:20px">Prices in US dollars. Smart cinematic rewards: estimated delivery JANUARY 2027. Shipping charged separately before dispatch.</p>
+ </div>
+</section>
+
+<!-- WHERE PLEDGE GOES -->
+<section class="studio">
+ <div class="container split">
+  <div>
+   <div class="eyebrow">WHERE YOUR PLEDGE GOES</div>
+   <h2>EVERY DOLLAR<br>BUILDS THE GAATHA .</h2>
+   <p>Funding supports prototype development, software, safety testing, production and delivery preparation.</p>
+  </div>
+  <div class="photo"><img src="9.png" alt="Dragon fantasy world"></div>
+ </div>
+</section>
+
+<!-- ROADMAP -->
+<section>
+ <div class="container">
+  <div class="eyebrow">THE ROAD TO HATCH DAY</div>
+  <h2>THE JOURNEY<br>BEGINS HERE.</h2>
+  <div class="timeline">
+   <div class="timeline-item"><strong>JUN 2027 – Mar 2028</strong><p>AUDIANS MY FULL GIVE  MY PROMPT.</p></div>
+   <div class="timeline-item"><strong>Spring 2027</strong><p>MY FIRST STORY WARIAN RELEASED ON .</p></div>
+   <div class="timeline-item"><strong>Summer 2027</strong><p>Safety certification and privacy audit.</p></div>
+   <div class="timeline-item"><strong>JANUARY 2027 · Target</strong><p>First Sony Sup Filmas.</p></div>
+  </div>
+ </div>
+</section>
+
+<!-- FAQ -->
+<section>
+ <div class="container">
+  <div class="eyebrow">QUESTIONS</div>
+  <h2>GOOD QUESTIONS.<br>HONEST ANSWERS.</h2>
+  <div class="faq">
+   <details><summary>Is this an investment?</summary><p>No. This is a product campaign concept, not an investment or an offer of financial returns.</p></details>
+   <details><summary>What if the none of god?</summary><p>Campaign terms, delivery conditions and refund policies should be published before accepting payments.</p></details>
+   <details><summary>Do you ship to my country?</summary><p>Shipping availability depends on the final sony sup  and fulfilment plan.</p></details>
+   <details><summary>Is it safe for my child?</summary><p>Safety, privacy and sony sup-appropriate features should be independently tested before product .</p></details>
+   <details><summary>Which languages will the god speak?</summary><p>Languages and voice features will depend on the final product specification.</p></details>
+  </div>
+ </div>
+</section>
+
+<!-- LAUNCH LIST -->
+<section id="launch" class="dragon-page">
+ <div class="container">
+  <div class="eyebrow">EVERY DARKNESS OF DISTROYE TO WORLD MOSTER BY GODNESS </div>
+  <h2>BE ONE OF<br>THE FIRST.</h2>
+  <p>Join the Sony sup list and hear when the campaign opens.</p>
+  <form class="form-box" id="launchForm">
+   <div class="form-grid">
+    <label>Your name<input name="name" required placeholder="Your name"></label>
+    <label>Email<input name="email" type="email" required placeholder="you@ZEETHER.com"></label>
+    <label>WhatsApp number<input name="whatsapp" placeholder="+91..."></label>
+    <label>Country<input name="country" placeholder="Your country"></label>
+    <label class="full">Reward
+     <select name="reward" id="rewardSelect">
+      <option>Choose a reward</option>
+      <option>Declare</option>
+      <option>SONY SUP</option>
+      <option>First FILM</option>
+     </select>
+    </label>
+   </div>
+   <label class="field" style="display:flex;align-items:center;gap:10px">
+    <input type="checkbox" name="updates" value="Yes" style="width:auto" required>
+    Email or WhatsApp me about the sony sup campaign.
+   </label>
+   <button class="btn primary" type="submit">Join the my sony sup  list ↗</button>
+   <p style="font-size:11px;margin-top:14px">Continue to the secure payment page. You choose the amount there.</p>
+  </form>
+ </div>
+</section>
+
+</main>
+
+<!-- FOOTER -->
+<footer>
+ <div class="container">
+  <div class="footer-top">
+   <a href="#home" class="logo">ZEETHER<small>AN AI-WONDER STORY AND ZN STUDIO.</small></a>
+   <div class="footer-links">
+    <a href="#world">World 00$</a>
+    <a href="#studio">Studio</a>
+    <a href="#partners">Partners</a>
+    <a href="#dragon">Enter Zeether</a>
+    <a href="#contact">Contact</a>
+    <a href="privacy.html">Privacy & Cookies</a>
+    <a href="terms.html">Terms</a>
+   </div>
+  </div>
+  <div class="footer-bottom">
+   <span>© 2026 YOUR STUDIO NAME. All rights reserved.</span>
+   <span>SONY SUP-LED. AI-ZEETHER.</span>
+  </div>
+ </div>
+</footer>
+
+<!-- MODALS -->
+<div class="modal" id="partnerModal">
+ <div class="modal-box">
+  <button class="modal-close" data-close>×</button>
+  <div class="eyebrow">PARTNERSHIPS</div>
+  <h2>LET'S BUILD<br>A WORLD.</h2>
+  <p>Contact the studio to discuss original ZN, production and partnership opportunities.</p>
+  <br>
+  <a class="btn primary" href="mailto:YOUR-EMAIL@ZEETHER.com?subject=ZEETHER%20Partnership">Email the studio ↗</a>
+ </div>
+</div>
+
+<div class="modal" id="numbersModal">
+ <div class="modal-box">
+  <button class="modal-close" data-close>×</button>
+  <div class="eyebrow">ABOUT THESE NUMBERS</div>
+  <h2>ONE STORY.<br>WORLDWIDE.</h2>
+  <p>View figures shown on this demo page are sample studio-reported figures. Views are not necessarily unique viewers. Replace them with verified, current figures and sources before publishing.</p>
+ </div>
+</div>
+
+<script>
+const $=s=>document.querySelector(s);
+const $$=s=>document.querySelectorAll(s);
+
+/* HEADER */
+window.addEventListener("scroll",()=>{
+ $("#header").classList.toggle("scrolled",window.scrollY>30);
+});
+$("#menuBtn").addEventListener("click",()=>{
+ $("#mobileMenu").classList.toggle("open");
+});
+$$(".mobile-menu a").forEach(a=>{
+ a.addEventListener("click",()=>$("#mobileMenu").classList.remove("open"));
+});
+
+/* REVEAL ON SCROLL */
+const observer=new IntersectionObserver(entries=>{
+ entries.forEach(entry=>{
+  if(entry.isIntersecting){
+   entry.target.classList.add("visible");
+   observer.unobserve(entry.target);
+  }
+ });
+},{threshold:.12});
+$$(".reveal").forEach(el=>observer.observe(el));
+
+/* WAARIAN OF HISTORY */
+let hatched=false;
+let hatchTimer;
+
+function createSparks(){
+ const stage=$("#eggStage");
+ for(let i=0;i<35;i++){
+  const spark=document.createElement("span");
+  spark.className="spark";
+  spark.style.left="50%";
+  spark.style.top="50%";
+  spark.style.setProperty("--x",(Math.random()*440-220)+"px");
+  spark.style.setProperty("--y",(Math.random()*360-180)+"px");
+  stage.appendChild(spark);
+  setTimeout(()=>spark.remove(),1400);
+ }
+}
+
+function hatchDragon(){
+ if(hatched)return;
+ hatched=true;
+ $("#eggButton").classList.add("cracking");
+ $("#eggInstruction").textContent="THE HISTORY OF DISTROYE...";
+ $("#eggNote").textContent="Something magical is waking up...";
+ createSparks();
+
+ hatchTimer=setTimeout(()=>{
+  $("#eggButton").classList.remove("cracking");
+  $("#eggButton").classList.add("hatched");
+  $("#dragonCharacter").classList.add("show");
+  $("#eggInstruction").textContent="YOUR WORLD HISTORY IS HERE";
+  $("#eggNote").textContent="Welcome to your new world.";
+  createSparks();
+ },1700);
+}
+function resetDragon(){
+ clearTimeout(hatchTimer);
+ hatched=false;
+ $("#eggButton").classList.remove("cracking","hatched");
+ $("#dragonCharacter").classList.remove("show");
+ $("#eggInstruction").textContent=" THE WORLD HISTORY";
+ $("#eggNote").textContent="Begin your story.";
+}
+$("#eggButton").addEventListener("click",hatchDragon);
+$("#hatchBtn").addEventListener("click",hatchDragon);
+$("#resetEgg").addEventListener("click",resetDragon);
+
+/* CO-FOUNDER CARD */
+$("#showCard").addEventListener("click",()=>{
+ $("#founderPanel").style.display="block";
+ $("#founderPanel").scrollIntoView({behavior:"smooth",block:"center"});
+});
+$("#dragonName").addEventListener("input",e=>{
+ $("#cardDragonName").textContent=e.target.value.trim()||"My SONY SUP ";
+});
+
+const pageURL=location.href;
+const shareText="I just discovered my zeether. Meet yours in the ZEETHER world!";
+$("#shareWhatsapp").href="https://wa.me/?text="+encodeURIComponent(shareText+" "+pageURL);
+$("#shareFacebook").href="https://www.facebook.com/sharer/sharer.php?u="+encodeURIComponent(pageURL);
+$("#shareX").href="https://twitter.com/intent/tweet?text="+encodeURIComponent(shareText)+"&url="+encodeURIComponent(pageURL);
+$("#shareThreads").href="https://www.threads.net/intent/post?text="+encodeURIComponent(shareText+" "+pageURL);
+$("#shareLinkedin").href="https://www.linkedin.com/sharing/share-offsite/?url="+encodeURIComponent(pageURL);
+$("#shareTelegram").href="https://t.me/share/url?url="+encodeURIComponent(pageURL)+"&text="+encodeURIComponent(shareText);
+
+$("#copyLink").addEventListener("click",async()=>{
+ try{
+  await navigator.clipboard.writeText(pageURL);
+  $("#copyLink").textContent="Copied!";
+ }catch(e){
+  prompt("Copy this page link:",pageURL);
+ }
+});
+
+$("#shareNative").addEventListener("click",async()=>{
+ if(navigator.share){
+  try{await navigator.share({title:"THE ZEETHER SONY",text:shareText,url:pageURL})}
+  catch(e){}
+ }else{
+  alert("Use one of the social sharing buttons below.");
+ }
+});
+
+/* SAVE SONY SUP CARD AS IMAGE */
+$("#saveCard").addEventListener("click",()=>{
+ const name=$("#cardDragonName").textContent;
+ const canvas=document.createElement("canvas");
+ canvas.width=1200;
+ canvas.height=700;
+ const ctx=canvas.getContext("2d");
+ const gradient=ctx.createLinearGradient(0,0,1200,700);
+ gradient.addColorStop(0,"#392b20");
+ gradient.addColorStop(1,"#090b0d");
+ ctx.fillStyle=gradient;
+ ctx.fillRect(0,0,1200,700);
+ ctx.strokeStyle="#c9a66b";
+ ctx.lineWidth=3;
+ ctx.strokeRect(28,28,1144,644);
+ ctx.fillStyle="#c9a66b";
+ ctx.font="24px Arial";
+ ctx.fillText("ZEETHER · THE GAATHA'S WARIAN",75,100);
+ ctx.font="bold 48px Georgia";
+ ctx.fillText("SONY SUP",75,190);
+ ctx.fillStyle="#eee8dc";
+ ctx.font="italic 80px Georgia";
+ ctx.fillText(name,75,360);
+ ctx.font="26px Arial";
+ ctx.fillText("Helping bring the first war from a film to life",75,470);
+ ctx.font="22px Arial";
+ ctx.fillStyle="#c9a66b";
+ ctx.fillText("ZEETHERSONY.com/SUP",75,590);
+ const link=document.createElement("a");
+ link.download="ZEETHER-SONY-SUP.png";
+ link.href=canvas.toDataURL("image/png");
+ link.click();
+});
+
+/* MODALS */
+$$("[data-modal]").forEach(btn=>{
+ btn.addEventListener("click",()=>{
+  $("#"+btn.dataset.modal).classList.add("open");
+ });
+});
+$$("[data-close]").forEach(btn=>{
+ btn.addEventListener("click",()=>btn.closest(".modal").classList.remove("open"));
+});
+$$(".modal").forEach(modal=>{
+ modal.addEventListener("click",e=>{
+  if(e.target===modal)modal.classList.remove("open");
+ });
+});
+
+/* REWARD CHOOSING */
+$$("[data-reward]").forEach(btn=>{
+ btn.addEventListener("click",()=>{
+  $("#rewardSelect").value=btn.dataset.reward;
+  $("#launch").scrollIntoView({behavior:"smooth"});
+ });
+});
+
+/* OPEN PAYMENT PAGE AFTER SAVING SIGNUP DETAILS */
+$("#launchForm").addEventListener("submit", e => {
+ e.preventDefault();
+ const form = e.currentTarget;
+ if (!form.reportValidity()) return;
+
+ const signup = Object.fromEntries(new FormData(form).entries());
+ sessionStorage.setItem("zeetherSignup", JSON.stringify(signup));
+ window.location.href = "payment.html";
+});
+</script>
+</body>
+</html>
+
+
+
+s
